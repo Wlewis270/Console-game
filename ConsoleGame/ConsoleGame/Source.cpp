@@ -1,16 +1,17 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <string>
+#include <conio.h>
 using namespace std;
 
+void refreshGrid();
 
-
+const int ROW = 20;
+const int COL = 20;
+int array2d[ROW][COL];
+int playerHealth = 1;
 
 void main() {
-	const int ROW = 20;
-	const int COL = 20;
-	int array2d[ROW][COL];
 	srand(time(NULL));
 
 	for (int row = 0; row < ROW; row++) {
@@ -37,15 +38,49 @@ void main() {
 		}
 		array2d[enemyRow][enemyCol] = 2;
 	}
-	
+
+	refreshGrid();
+
+	char myVal;
+	cin >> myVal;
+
+
+	switch (myVal) {
+
+	while (playerHealth == 1) {
+		case 'w':
+			playerCol + 1;
+			array2d[playerRow][playerCol] = 1;
+			refreshGrid();
+			break;
+		case 's':
+			playerCol - 1;
+			array2d[playerRow][playerCol] = 1;
+			refreshGrid();
+			break;
+		case 'd':
+			playerRow + 1;
+			array2d[playerRow][playerCol] = 1;
+			refreshGrid();
+			break;
+		case 'a':
+			playerRow - 1;
+			array2d[playerRow][playerCol] = 1;
+			refreshGrid();
+			break;
+
+		}
+	}
+}
+
+void refreshGrid() {
+	system("cls");
 	for (int row = 0; row < ROW; row++) {
 		for (int col = 0; col < COL; col++) {
-			cout << "\t" << array2d[row][col];
-
+			cout << "  " << array2d[row][col];
 		}
 		cout << "\n";
 	}
-	
-	system("pause");
+
 }
 
