@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <conio.h>
 using namespace std;
 
 void refreshGrid();
@@ -50,22 +49,18 @@ void main() {
 		case 'w':
 			playerCol + 1;
 			array2d[playerRow][playerCol] = 1;
-			refreshGrid();
 			break;
 		case 's':
 			playerCol - 1;
 			array2d[playerRow][playerCol] = 1;
-			refreshGrid();
 			break;
 		case 'd':
 			playerRow + 1;
 			array2d[playerRow][playerCol] = 1;
-			refreshGrid();
 			break;
 		case 'a':
 			playerRow - 1;
 			array2d[playerRow][playerCol] = 1;
-			refreshGrid();
 			break;
 	}
 	
