@@ -4,13 +4,18 @@
 using namespace std;
 
 void refreshGrid();
+void spawnGoal();
+void spawnEnemies();
+void spawnPlayer();
 
 const int ROW = 20;
 const int COL = 20;
 int array2d[ROW][COL];
-int playerHealth = 1;
+int playerHealth = 1, points = 0, goalCol = 0, goalRow = 0, enemyCol = 0, enemyRow = 0, playerCol = 0, playerRow = 0, numEnemy = 0;
 
 void main() {
+	cout << "Welcome to my console game \n\n\ This game features customisable difficulty \n\n How many enemies would like to spawn (WARNING I HAVE PUT NO LIMIT ON THIS, IF STUFF BREAKS ITS NOT MY FAULT)\n\n";
+	cin >> numEnemy;
 	srand(time(NULL));
 
 	for (int row = 0; row < ROW; row++) {
@@ -20,51 +25,46 @@ void main() {
 		}
 		cout << "\n";
 	}
-
-	int playerRow = rand() % ROW;
-	int playerCol = rand() % COL;
-	array2d[playerRow][playerCol] = 1;
-
-	int enemyCol = 0;
-	int enemyRow = 0;
-
-	for (int i = 0; i < 3; i++) {
-		enemyCol = rand() % COL;
-		enemyRow = rand() % ROW;
-		while (array2d[enemyRow][enemyCol] == 1 || array2d[enemyRow][enemyCol] == 2) {
-			enemyCol = rand() % COL;
-			enemyRow = rand() % ROW;
+	for(int i = 0; i < numEnemy; i++){
+		spawnEnemies();
 		}
-		array2d[enemyRow][enemyCol] = 2;
-	}
-
+	spawnGoal();
+	spawnPlayer();
 	refreshGrid();
 
-	char myVal;
-	cout << "Enter value: ";
-	cin >> myVal;
+	while (playerHealth == 1) {
+		char playerInput;
+		cout << "Enter value: ";
+		cin >> playerInput;
 
-	switch (myVal) 
-	{		
+		switch (playerInput){
 		case 'w':
-			playerCol + 1;
+			array2d[playerRow][playerCol] = 0;
+			playerRow -= 1;
 			array2d[playerRow][playerCol] = 1;
 			break;
 		case 's':
-			playerCol - 1;
+			array2d[playerRow][playerCol] = 0;
+			playerRow += 1;
 			array2d[playerRow][playerCol] = 1;
 			break;
 		case 'd':
-			playerRow + 1;
+			array2d[playerRow][playerCol] = 0;
+			playerCol += 1;
 			array2d[playerRow][playerCol] = 1;
 			break;
 		case 'a':
-			playerRow - 1;
+			array2d[playerRow][playerCol] = 0;
+			playerCol -= 1;
 			array2d[playerRow][playerCol] = 1;
 			break;
+		}
+		refreshGrid();
 	}
 	
-	system("pause");
+	if (playerHealth == 0) {
+
+	}
 }
 
 void refreshGrid() {
@@ -75,5 +75,37 @@ void refreshGrid() {
 		}
 		cout << "\n";
 	}
+}
 
+void spawnGoal() {
+	array2d[goalRow][goalCol] = 0;
+	goalCol = rand() % COL;
+	goalRow = rand() % ROW;
+	while (array2d[goalRow][goalCol] == 1 || array2d[goalRow][goalCol] == 2 || array2d[goalRow][goalCol] == 3) {
+		goalCol = rand() % COL;
+		goalRow = rand() % ROW;
+		}
+		array2d[goalRow][goalCol] = 3;
+}
+
+void spawnEnemies() {
+	enemyCol = rand() % COL;
+	enemyRow = rand() % ROW;
+	while (array2d[enemyRow][enemyCol] == 1 || array2d[enemyRow][enemyCol] == 2 || array2d[enemyRow][enemyCol] == 3) {
+		enemyCol = rand() % COL;
+		enemyRow = rand() % ROW;
+	}
+	array2d[enemyRow][enemyCol] = 2;
+}
+
+
+void spawnPlayer() {
+	array2d[playerRow][playerCol] = 0;
+	playerCol = rand() % COL;
+	playerRow = rand() % ROW;
+	while (array2d[playerRow][playerCol] == 1 || array2d[playerRow][playerCol] == 2 || array2d[playerRow][playerCol] == 3) {
+		playerCol = rand() % COL;
+		playerRow = rand() % ROW;
+	}
+	array2d[goalRow][goalCol] = 1;
 }
