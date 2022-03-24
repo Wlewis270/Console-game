@@ -1,8 +1,4 @@
 ﻿  Source.cpp
-C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(52,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(53,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(110,14): warning C4552: '+': result of expression not used
-C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(115,14): warning C4552: '-': result of expression not used
-C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(120,14): warning C4552: '+': result of expression not used
-C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(125,14): warning C4552: '-': result of expression not used
+C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(55,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\whatt\Documents\GitHub\Console-game\Console Game\Source.cpp(56,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Console Game.vcxproj -> C:\Users\whatt\Documents\GitHub\Console-game\Debug\Console Game.exe

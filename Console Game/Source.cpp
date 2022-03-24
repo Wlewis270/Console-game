@@ -53,8 +53,6 @@ void menu()
 }
 
 void main() {
-	cout << "Welcome to my console game \n\n\ This game features customisable difficulty \n\n How many enemies would like to spawn (WARNING I HAVE PUT NO LIMIT ON THIS, IF STUFF BREAKS ITS NOT MY FAULT)\n\n";
-	cin >> numEnemy;
 	srand(time(NULL));
 	void menu();
 	if (start == true) {
@@ -105,12 +103,12 @@ void main() {
 
 		refreshGrid();
 
-	char myVal;
-	cout << "Enter value: ";
-	cin >> myVal;
+		char myVal;
+		cout << "Enter value: ";
+		cin >> myVal;
 
-	switch (myVal) 
-	{		
+		switch (myVal)
+		{
 		case 'w':
 			array2d[playerRow][playerCol] = 0;
 			playerRow -= 1;
@@ -139,13 +137,6 @@ void main() {
 
 		system("pause");
 	}
+}
 
-void refreshGrid() {
-	system("cls");
-	for (int row = 0; row < ROW; row++) {
-		for (int col = 0; col < COL; col++) {
-			cout << "  " << array2d[row][col];
-		}
-		cout << "\n";
-	}
 
